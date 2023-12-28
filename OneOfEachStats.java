@@ -24,6 +24,63 @@ public class OneOfEachStats {
 		//// just like you had in the previous version, except that the 
 		//// randomization will be based on the given seed.
 		//// This is the only change that you have to do in the program.
+
+  int experiments = Integer.parseInt(args[0]);
+  
+  boolean boy= false;
+  boolean girl= false;
+  int count = 0;
+  int sum = 0;
+  int two = 0;
+  int three = 0;
+  int fourMore = 0;
+  String details = "";
+  
+  for (int i = 0; i < experiments; i++){ //runs X experiments
+      girl = false;
+      boy = false;
+      count = 0;
+      details = "";
+  while (! (girl && boy == true)){
+    double kid = generator.nextDouble();
+	count = count + 1;
+	
+	if (kid >= 0 && kid < 0.5){
+	 details+= "b ";
+	 boy = true;
+	 }
+	else if (kid >= 0.5) {
+	 details+= "g ";
+	 girl = true;
+	 }
+	 
+   }
+   sum+=count;
+	
+   if (count == 2) {
+       two++;
+   }
+   if (count == 3) {
+       three++;
+   }
+   if (count >= 4) { //count is 4 or more
+       fourMore++; }
+}
+  double average = (double)sum/ experiments;
+  System.out.println ("Average: " + average + " children to get at least one of each gender.");
+  System.out.println ("Number of families with 2 children: " + two);
+  System.out.println ("Number of families with 3 children: " + three);
+  System.out.println ("Number of families with 4 or more children: " + fourMore);
+  int max = Math.max (Math.max(two,three), fourMore);
+  if (max == two){
+  System.out.println ("The most common number of children is 2.");
+}
+  if (max == three){
+    System.out.println ("The most common number of children is 3.");
+}
+  if (max == fourMore){
+      System.out.println ("The most common number of children is 4 or more.");
+  }
 		    
 	}
 }
