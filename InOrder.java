@@ -5,5 +5,17 @@
 public class InOrder {
 	public static void main (String[] args) {
 		//// Write your code here
+		int first = (int)(Math.random() * 10);
+	System.out.println(first);
+	int next = (int)(Math.random() * 10);
+	
+	if (next >= first) {
+	 do {
+	 System.out.println (next);
+	 first = next;
+	 next = (int)(Math.random() * 10);
+	  }
+	 while (next >= first);
+	 }
 	}
 }
